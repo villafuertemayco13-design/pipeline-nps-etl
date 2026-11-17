@@ -3,7 +3,14 @@ from src.transformacion import limpiar_datos
 
 def ejecutar_pipeline():
     # EXTRACT: leer datos
-    df = pd.read_csv("data/raw/encuestas.csv")
+    df = pd.read_csv(
+    "data/raw/encuestas.csv",
+    dtype={
+        "Cliente": "int32",
+        "NPS": "float32",
+        "Operacion": "category"
+    }
+)
 
     # TRANSFORM: limpiar datos
     df_limpio = limpiar_datos(df)
